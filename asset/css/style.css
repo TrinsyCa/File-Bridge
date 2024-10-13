@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    user-select: none;
+}
+body {
+    background-color: #111;
+    color: white;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.file-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.file-container .titleBox {
+    font-size: 2rem;
+}
+.file-container .descriptionBox {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+.suffix {
+    margin-top: 30px;
+    font-size: 1.1rem;   
+}
+.suffix a {
+    color: #E4B063;
+    font-size: 18px;
+    text-shadow: 0 0 10px #E4B063,0 0 10px #E4B063,0 0 10px #E4B063;
+    opacity: 1;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+.suffix a:hover {
+    color: red;
+    text-shadow: 0 0 10px red,0 0 10px red;
+}
+.suffix a:active {
+    text-shadow: 0 0 10px red,0 0 10px red,0 0 10px red,0 0 10px red;
+}
+.uploadBox {
+    position: relative;
+    width: 800px;
+    height: 550px;
+    background-color: #151515;
+    border-radius: 25px;
+    border: 2px solid #444;
+    transition: 0.35s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.uploadBox:hover
+.uploadBox.hover {
+    background-color: #222;
+}
+.uploadBox:active {
+    background-color: #333;
+}
+.uploadBox input[type="file"] {
+    display: none;
+}
+.uploadBox img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 50px;
+}
+.uploadBox .text {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.uploadBox .text p {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+.uploadBox .text span {
+    font-size: 1.2rem;
+    opacity: 0.6;
+}
+.href-section {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    transition: 0.35s;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+.href-container {
+    padding: 30px 40px;
+    border-radius: 30px;
+    background-color: #252525;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    border: 2px solid white;
+    box-shadow: 0 0 15px 7px black;
+    user-select: none;
+    transition: 0.35s;
+    scale: 0.5;
+}
+.hrefBox {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #353535;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.35s;
+}
+.hrefBox:active {
+    background-color: #444;
+}
+.hrefBox p {
+    pointer-events: none;
+    font-size: 1rem;
+}
+.href-section.active {
+    pointer-events: all;
+    opacity: 1;
+}
+.href-section.active .href-container {
+    scale: 1.1;
+}
