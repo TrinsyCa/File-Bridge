@@ -63,7 +63,7 @@ body {
     align-items: center;
     gap: 5px;
 }
-.uploadBox:hover
+.uploadBox:hover,
 .uploadBox.hover {
     background-color: #222;
 }

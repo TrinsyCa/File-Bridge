@@ -12,22 +12,35 @@
         $url = $_SERVER['REQUEST_URI'];
         $href = basename($url);
         $href = htmlspecialchars($href);
-        
+
         try {
             include_once "asset/php/connection.php";
             $stmt = $db->prepare("SELECT * FROM files WHERE href = :href");
             $stmt->bindParam(":href", $href);
             $stmt->execute();
             $fileData = $stmt->fetch(PDO::FETCH_ASSOC);
+
             if ($fileData) {
                 $path = $fileData['path'];
                 if (file_exists($path)) {
-                    header('Content-Type: ' . mime_content_type($path));
-                    readfile($path);
+                    $mimeType = mime_content_type($path);
+                    ob_clean();
+                    header('Content-Type: ' . $mimeType);
+                    header('Content-Disposition: inline; filename="' . basename($path) . '"');
+                    header('Cache-Control: public, max-age=86400'); // 1 Day Cache
+    
+                    $file = fopen($path, 'rb');
+                    if ($file) {
+                        fpassthru($file);
+                        fclose($file);
+                        exit;
+                    } else {
+                        echo "Dosya okunamadı.";
+                    }
                 }
             }
         } catch (Exception $e) {
-            echo "Veri tabanına bağlanılamadı.";
+            echo "Bir hata oluştu: " . $e->getMessage();
         }
     ?>
     <section class="href-section">
